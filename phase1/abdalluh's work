@@ -1,1 +1,100 @@
 #include <stdio.h>
+
+void display_menu(void);
+int read_id(void);
+float read_mark(void);
+char grade(float mark);
+void display_student_info(int id , float mark , char grade );
+int main (void){
+    int std1_id , std2_id , std3_id ; 
+    float std1_mark , std2_mark , std3_mark ; 
+    char std1_grade , std2_grade , std3_grade ;
+    int choice , id ; float mark ; 
+ printf("\n   Welcome\n\n");
+ printf("  Please Enter studint 1 information : \n");
+ std1_id = read_id();
+ std1_mark = read_mark();
+ std1_grade = grade(std1_mark);
+ printf("  Please Enter studint 2 information : \n");
+ std2_id = read_id();
+ std2_mark = read_mark();
+ std2_grade = grade(std2_mark);
+ printf("  Please Enter studint 3 information : \n");
+ std3_id = read_id();
+ std3_mark = read_mark();
+ std3_grade = grade(std3_mark);
+ printf("\n");
+do {
+    display_menu(); scanf("%i",&choice);
+    switch(choice){
+        case 1 :    printf("\n");
+        printf("1- All Students info : \n");
+        display_student_info(std1_id , std1_mark , std1_grade);
+        display_student_info(std2_id , std2_mark , std2_grade);
+        display_student_info(std3_id , std3_mark , std3_grade);
+        printf("\n");
+        break;
+        case 2 :    printf("\n"); printf("2- One Student info : \n");
+        id = read_id();
+        if(id==std1_id) display_student_info(std1_id,std1_mark,std1_grade);
+    else
+        if(id==std2_id) display_student_info(std2_id,std2_mark,std2_grade);
+    else 
+        if (id==std3_id) display_student_info(std3_id,std3_mark,std3_grade);
+    else printf("No such ID found .\n"); 
+        break;
+        case 3 : printf("\n 3- update Student mark : \n");
+        id = read_id(); 
+        if (id == std1_id) { 
+            printf("Please Enter a New Mark . \n");
+            std1_mark = read_mark(); std1_grade = grade(std1_mark); }
+    else
+        if(id == std2_id) { 
+            printf("Please Enter a New Mark . \n");
+            std2_mark = read_mark(); std2_grade = grade(std2_mark); }
+    else    
+        if(id == std3_id) {
+            printf("Please Enter a New Mark . \n");
+            std3_mark = read_mark(); std3_grade = grade(std3_mark); }
+    else printf("No such ID . \n "); 
+        break;
+        case 4 : printf("  Good Bye . ");
+        break;
+        default : printf("  ERROR : invalid input. \n");
+        }
+}
+        while(choice!=4);
+}
+
+void display_menu(void){
+    printf("===================================\n  ");
+    printf("Please choose a number (1-4) : \n  ");
+    printf("1- Display All Students info \n  ");
+    printf("2- Search and Display one Student \n  ");
+    printf("3- update Student Mark \n  ");
+    printf("4- Exit \n  ");
+    printf(">>");
+}
+int read_id(void){
+    int id ;
+    printf("  ID : ");    scanf("%i",&id); return id;
+}
+float read_mark(void){
+    float mark ;
+    printf("  Mark : ");  scanf("%f",&mark); return mark;
+}
+char grade(float mark){
+    if((mark<=100)&&(mark>=90)) return 'A';
+    else 
+    if ((mark<90)&&(mark>=80)) return 'B';
+    else
+    if((mark<80)&&(mark>=70)) return 'C';
+    else 
+    if((mark<70)&&(mark>=60)) return 'D';
+    else 
+    if(mark<60) return 'F';
+}
+void display_student_info(int id , float mark , char grade){
+    printf("==============================\n");
+    printf("  ID :%i \n",id); printf("  Mark :%f \n",mark); printf("  Grade :%c \n",grade);
+}
