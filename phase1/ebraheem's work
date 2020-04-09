@@ -82,18 +82,25 @@ int main(void) {
 									scanf("%f",&std3_mark);
 									std3_grade = grade(std3_mark);
 								}
-								else printf("No such ID found.");
+								else printf("No such ID found.\n");
 								printf("\n");
 								break;
-			case 4: return 0;
+			case 4: 
+			
+			printf("\nGood bye.");
+			
+			return 0;
 			   break;
 			   
 			   default:
 			   printf("ERROR: invalid input\n");
+			   printf("\n");
 			   break;
 		}
 	}
 	while (choice !=4);
+	
+	
 	
 	return 0;
 }
@@ -148,4 +155,3 @@ void display_student_info(int id, float mark, char grade) {
 	printf("Mark  :  %f\n", mark);
 	printf("Grade :  %c\n", grade);
 }
-
